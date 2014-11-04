@@ -9,6 +9,4 @@
 #define UTILITIES_H_
 
 
-int Socket(int namespace, int style, int protocol);
-
 #endif /* UTILITIES_H_ */

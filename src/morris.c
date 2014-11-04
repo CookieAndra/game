@@ -13,14 +13,14 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "utilities.h"
+#include "connect.h"
 
-#define GAMEKINDNAME 	"NMMorris"
-#define PORTNUMBER 		1357
-#define HOSTNAME 		"sysprak.priv.lab.nm.ifi.lmu.de"
-
-int sock;
+int sock; //socket file descriptor
 
 int main(int argc, char *argv[]) {
-	sock = Socket(AF_INET, SOCK_STREAM, 0);
+	char test[255];
+	sock = establishConnection();
+	recv(sock, test, 255,0);
+	printf("%s", test);
 	return EXIT_SUCCESS;
 }
