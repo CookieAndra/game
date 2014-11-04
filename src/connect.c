@@ -3,7 +3,7 @@
  *
  *  Created on: 04.11.2014
  *      Author: oliverheidemanns
- *	This File is used to establish Connection to a server and return the socket file destriptor
+ *	This File is used to establish connection to a server and return the socket file descriptor
  */
 #include <stdio.h>
 #include <stdlib.h>
