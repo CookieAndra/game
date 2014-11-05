@@ -12,15 +12,17 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <strings.h>
 #include "utilities.h"
-#include "connect.h"
+#include "connect.h" 	//establishConnection()
+#include "shm.h"  //createSharedmemory()
 
-int sock; //socket file descriptor
+/* Global Variables */
+int sock; 	//socket file descriptor
 
 int main(int argc, char *argv[]) {
-	char test[255];
+	char *ptr = createSharedMemory(10);
 	sock = establishConnection();
-	recv(sock, test, 255,0);
-	printf("%s", test);
+
 	return EXIT_SUCCESS;
 }

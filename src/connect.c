@@ -24,13 +24,14 @@
 int establishConnection() {
 	char hostName[240] = HOSTNAME;
 	char portNumber[10] = PORTNUMBER;
-	printf("Trying to establish Connection to [%s:%s] \n", hostName, portNumber);
 	struct addrinfo hints, *serverInfo;
 	serverInfo = malloc(sizeof(struct addrinfo));
 	memset(&hints, 0, sizeof(struct addrinfo));
 
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
+
+	printf("Trying to establish Connection to [%s:%s] \n", hostName, portNumber);
 
 	int sock = Socket(AF_INET, SOCK_STREAM, 0); //Wrapper function
 	Getaddrinfo(HOSTNAME, PORTNUMBER, &hints, &serverInfo); //Wrapper function

@@ -9,7 +9,27 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <sys/shm.h>
 
+int	Shmget(key_t a, size_t b, int c) {
+	int ret;
+	if ((ret = shmget(a,b,c)) == -1) {
+		perror("Error creating SHM segment\n");
+		exit(EXIT_FAILURE);
+	}
+	printf("Created Shared Memory Segment\n");
+	return ret;
+}
+
+void *Shmat (int a, const void *b, int c) {
+	void *ptr;
+	ptr = shmat(a,b,c);
+	if (ptr==(char *)-1) {
+		perror("Error attaching shm\n");
+		exit(EXIT_FAILURE);
+	}
+	return ptr;
+}
 
 int Socket(int namespace, int type, int protocol) {
 	int sock = socket(namespace, type, protocol);
